@@ -1,10 +1,15 @@
 dist: xenial # Ubuntu 16.04, Xenial Xerus
 language: python
 python: "3.6" # Python 3.6
+
+install:
+  - pip install coverage
+
 # script to run tests
 script:
   - python3 -m unittest
 
 # public Travis CI repo
 after_success:
+  - coverage run test_rpn.py
   - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
