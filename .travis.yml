@@ -3,4 +3,4 @@ language: python
 python: "3.6" # Python 3.6
 # script to run tests
 script:
-  - python test_rpn.py
+  - python3 -m unittest
