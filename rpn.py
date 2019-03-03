@@ -3,7 +3,9 @@
 import operator
 import readline
 import math
+from colorama import init, Fore, Back, Style
 
+init()
 
 operators = {
     '+': operator.add,
@@ -51,9 +53,15 @@ def calculate(myarg):
         return stack.pop()
 
 def main():
+    
     while True:
         result = calculate(input("rpn calc> "))
-        print("Result: ", result)
+        if (result >= 0):
+            print("Result: ", Fore.GREEN+str(result))
+        
+        elif(result < 0):
+            print("Result: ", Fore.RED+str(result))
+        print(Style.RESET_ALL)
 
 if __name__ == '__main__':
     main()
