@@ -34,14 +34,17 @@ def calculate(myarg):
                 token = int(token)
                 stack.append(token)
             except ValueError:
+                # If the token is a const., append to stack
                 if (token in constants):
                     token = constants[token]
                     stack.append(token)
+                # Else if the token is a unary operator, only pop first argument
                 elif (token in one_operators):
                     function = operators[token]
                     arg1 = stack.pop()
                     result = function(arg1)
                     stack.append(result)
+                # Else it's a binary operator, proceed as normal
                 else:
                     function = operators[token]
                     arg2 = stack.pop()
@@ -61,6 +64,8 @@ def main():
         
         elif(result < 0):
             print("Result: ", Fore.RED+str(result))
+
+        # Reset print style so prompt is colored correctly
         print(Style.RESET_ALL)
 
 if __name__ == '__main__':
